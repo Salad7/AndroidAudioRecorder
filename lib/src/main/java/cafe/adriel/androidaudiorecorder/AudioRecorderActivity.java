@@ -152,10 +152,10 @@ public class AudioRecorderActivity extends AppCompatActivity
 
     @Override
     protected void onPause() {
-        restartRecording(null);
-        try {
-            visualizerView.onPause();
-        } catch (Exception e){ }
+//        restartRecording(null);
+//        try {
+//            visualizerView.onPause();
+//        } catch (Exception e){ }
         super.onPause();
     }
 

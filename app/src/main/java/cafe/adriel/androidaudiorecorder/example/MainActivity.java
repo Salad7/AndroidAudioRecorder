@@ -46,6 +46,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AndroidAudioRecorder.with(this)
+                // Required
+                .setFilePath(AUDIO_FILE_PATH)
+                .setColor(ContextCompat.getColor(this, R.color.recorder_bg))
+                .setRequestCode(REQUEST_RECORD_AUDIO)
+
+                // Optional
+                .setSource(AudioSource.MIC)
+                .setChannel(AudioChannel.STEREO)
+                .setSampleRate(AudioSampleRate.HZ_48000)
+                .setAutoStart(true)
+                .setKeepDisplayOn(true)
+
+                // Start recording
+                .record();
+    }
+
     public void recordAudio(View v) {
         AndroidAudioRecorder.with(this)
                 // Required
@@ -57,9 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 .setSource(AudioSource.MIC)
                 .setChannel(AudioChannel.STEREO)
                 .setSampleRate(AudioSampleRate.HZ_48000)
-                .setAutoStart(false)
-                .setKeepDisplayOn(true)
-
+                .setAutoStart(true)
+                .setKeepDisplayOn(false)
                 // Start recording
                 .record();
     }
